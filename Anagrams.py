@@ -1,9 +1,6 @@
 from collections import Counter
-from datetime import date
 import random
 import time
-
-random.seed(str(date.today()))
 
 
 def scramble(word):
@@ -16,7 +13,7 @@ with open("Dictionary.txt", "r") as dictFile:
     words = [line.strip() for line in dictFile]
 
 
-def wordsOfLen(num):
+def words_of_len(num):
     return list(filter(lambda x: len(x) == num, words))
 
 
@@ -29,14 +26,14 @@ letters = scramble(maxLengthWord)
 lettersCounter = Counter(letters)
 
 
-def isAnagram(word):
-    wordCounter = Counter(word)
-    return [wordCounter[letter] <= lettersCounter[letter] for letter in wordCounter].count(False) == 0
+def is_anagram(word):
+    word_counter = Counter(word)
+    return [word_counter[letter] <= lettersCounter[letter] for letter in word_counter].count(False) == 0
 
 
 validWords = dict()
 for i in range(minLength, maxLength + 1):
-    iLength = list(filter(isAnagram, wordsOfLen(i)))
+    iLength = list(filter(is_anagram, words_of_len(i)))
     if len(iLength) != 0:
         validWords[i] = iLength
 
