@@ -1,6 +1,9 @@
-from collections import Counter
 import random
 import time
+from collections import Counter
+from datetime import date
+
+random.seed(str(date.today()))
 
 
 def scramble(word):
